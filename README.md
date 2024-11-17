@@ -21,7 +21,7 @@ e.g database user, name, password
 && 
 
 ```
-port = 3000  
+port = 3001  
  "start": "nodemon --exec ./node_modules/.bin/babel-node server.js" to be set on vps server 
 
 npm init
@@ -31,9 +31,9 @@ npm start
 #Setup Locally with nodejs version 20.
 you can also include given node mudules to save time (extract from zip)
 
-visit http://localhost:3000 in your browser.
+visit http://localhost:3001 in your browser.
 Live app preview  https://binod.live
-login id password :9876543210 & 123456 respectively
+login id password :9304924340 & 123456 respectively
 
 ## Another application required here is Xampp server installed and database server is set to - Server version: 10.4.12-MariaDB-log
 change user account credentials in phpmyadmin
