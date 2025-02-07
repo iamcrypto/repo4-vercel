@@ -584,7 +584,7 @@ img[data-v-7b9b9922] {
   z-index: 999;
 }
 .van-tabbar {
-    background: url(/images/tabBarBg.png);
+  background: url(/images/tabBarBg.png);
   left: auto !important;
   background-position: center;
 }

@@ -86,11 +86,11 @@
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
   <script src="/js/admin/admin.js"></script>
   <script>
-    $("#search").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("tbody tr").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-        });
+    $("#search").on("keyup", function () {
+      var value = $(this).val().toLowerCase();
+      $("tbody tr").filter(function () {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+      });
     });
   </script>
   <script>
@@ -102,7 +102,7 @@
       let html = '';
       datas.map((data) => {
         html += `
-        <tr class="text-center" style="">
+        <tr class="text-center"  >
           <td>${data.id_user}</td>
           <td>
             <b style="color: #2003db">${data.phone}</b>
@@ -139,7 +139,7 @@
         </tr>`;
         $("tbody").html(html);
       });
-      $('.btn-danger').click(function (e) { 
+      $('.btn-danger').click(function (e) {
         e.preventDefault();
         let check = confirm("Are you sure you want to lock this account ?");
         let id = $(this).attr('id');
@@ -160,7 +160,7 @@
         }
       });
 
-      $('.btn-info1').click(function (e) { 
+      $('.btn-info1').click(function (e) {
         e.preventDefault();
         let check = confirm("Are you sure you want to unlock this account ?");
         let id = $(this).attr('id');
@@ -183,10 +183,10 @@
 
     }
 
-    $('#search').keypress(function(event){
+    $('#search').keypress(function (event) {
       var keycode = (event.keyCode ? event.keyCode : event.which);
       var value = $('#search').val().trim();
-      if(keycode == '13'){
+      if (keycode == '13') {
         $.ajax({
           type: "POST",
           url: "/api/webapi/search",

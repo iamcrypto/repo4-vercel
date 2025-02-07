@@ -5,23 +5,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Create giftcode</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/dist/css/adminlte.min.css">
     <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/admin.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
         .result {
             display: flex;
         }
-        
+
         .result input {
             width: 90%;
             border-radius: 5px 0 0 5px;
         }
-        
+
         .result .input-group-text {
             width: 10%;
             border-radius: 0 5px 5px 0;
@@ -30,7 +32,7 @@
             background-color: #007bff;
             color: #fff;
         }
-        
+
         .result .input-group-text:active,
         .result .input-group-text:hover {
             background-color: #2ecc71;
@@ -60,11 +62,13 @@
                                 <div style="padding: 10px 20px;">
                                     <div class="form-group money">
                                         <label for="money">Giftcode</label>
-                                        <input type="text" oninput="value=value.replace(/\D/g,'')" class="form-control" id="money" placeholder="Enter the amount">
+                                        <input type="text" oninput="value=value.replace(/\D/g,'')" class="form-control"
+                                            id="money" placeholder="Enter the amount">
                                     </div>
                                     <div class="form-group money">
                                         <label for="user">Users</label>
-                                        <input type="number"  class="form-control" id="user" placeholder="Enter the no of user">
+                                        <input type="number" class="form-control" id="user"
+                                            placeholder="Enter the no of user">
                                     </div>
                                     <div class="form-group result" style="display: none;">
                                         <input type="text" class="form-control" id="money_result" placeholder="Link">
@@ -72,8 +76,9 @@
                                             <i class="fa fa-clone" aria-hidden="true"></i>
                                         </div>
                                     </div>
-    
-                                    <button type="submit" class="btn btn-danger" id="submit" style="width: 100%;margin-top: 26px;">Create</button>
+
+                                    <button type="submit" class="btn btn-danger" id="submit"
+                                        style="width: 100%;margin-top: 26px;">Create</button>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +111,7 @@
                                         <th class="text-center">Users</th>
                                         <th class="text-center">Already Used</th>
                                         <th class="text-center">Time</th>
-                                        
+
                                     </tr>
                                 </thead>
                                 <tbody id="list-details-news">
@@ -125,34 +130,34 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
     <script>
-    function formateT(params) {
-    let result = (params < 10) ? "0" + params : params;
-    return result;
-    }
-    
-    function timerJoin(params = '', addHours = 0) {
-        let date = '';
-        if (params) {
-            date = new Date(Number(params));
-        } else {
-            date = new Date();
+        function formateT(params) {
+            let result = (params < 10) ? "0" + params : params;
+            return result;
         }
-    
-        date.setHours(date.getHours() + addHours);
-    
-        let years = formateT(date.getFullYear());
-        let months = formateT(date.getMonth() + 1);
-        let days = formateT(date.getDate());
-    
-        let hours = date.getHours() % 12;
-        hours = hours === 0 ? 12 : hours;
-        let ampm = date.getHours() < 12 ? "AM" : "PM";
-    
-        let minutes = formateT(date.getMinutes());
-        let seconds = formateT(date.getSeconds());
-    
-        return years + '-' + months + '-' + days + ' ' + hours + ':' + minutes + ':' + seconds + ' ' + ampm;
-    }
+
+        function timerJoin(params = '', addHours = 0) {
+            let date = '';
+            if (params) {
+                date = new Date(Number(params));
+            } else {
+                date = new Date();
+            }
+
+            date.setHours(date.getHours() + addHours);
+
+            let years = formateT(date.getFullYear());
+            let months = formateT(date.getMonth() + 1);
+            let days = formateT(date.getDate());
+
+            let hours = date.getHours() % 12;
+            hours = hours === 0 ? 12 : hours;
+            let ampm = date.getHours() < 12 ? "AM" : "PM";
+
+            let minutes = formateT(date.getMinutes());
+            let seconds = formateT(date.getSeconds());
+
+            return years + '-' + months + '-' + days + ' ' + hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+        }
         const RenderMemberNews = (datas) => {
             if (datas.length == 0) {
                 $('#list-details-news').html(`
@@ -164,9 +169,9 @@
             }
             let html = '';
             datas.map((data) => {
-                html += 
-                `
-                <tr class="text-center" style="">
+                html +=
+                    `
+                <tr class="text-center"  >
                     <td>${data.id_redenvelope}</td>
                     <td style="color: #3498db;font-weight: 600;min-width: 210px">${data.phone}</td>
                     <td><b style="color: #e74c3c">${(data.money)}</b></td>
@@ -179,7 +184,7 @@
                 $("#list-details-news").html(html);
             });
         }
-        $('.copy_link').click(function(e) {
+        $('.copy_link').click(function (e) {
             var url = $('#money_result').val();
             navigator.clipboard.writeText(url);
             Swal.fire(
@@ -188,7 +193,7 @@
                 'success'
             );
         });
-        
+
         $.ajax({
             type: "GET",
             url: "/admin/manager/listRedenvelops",
@@ -199,23 +204,33 @@
             }
         });
 
-        $('#submit').click(function (e) { 
+        $('#submit').click(function (e) {
             e.preventDefault();
             let money = $('#money').val().trim();
             let numberOfUsers = $('#user').val();
             if (money) {
                 $.ajax({
                     type: "POST",
-                    url: "/admin/manager/createBonus",
+                    url: "/C:\Users\HP\Downloads\src\routes\web_old.js",
                     data: {
                         money: money,
                         numberOfUsers: numberOfUsers,
                     },
                     dataType: "json",
                     success: function (response) {
-                        if(response.status == true) {
+                        if (response.status == true) {
                             $('#money_result').val(response.id);
                             $('.result').show();
+
+                            $.ajax({
+                                type: "GET",
+                                url: "/admin/manager/listRedenvelops",
+                                // data: "",
+                                dataType: "json",
+                                success: function (response) {
+                                    RenderMemberNews(response.redenvelopes);
+                                }
+                            });
                         }
                     }
                 });
@@ -223,7 +238,7 @@
                 alert("Please Enter The Amount");
             }
         });
-        $('select').change(function() {
+        $('select').change(function () {
             var value = $('select :selected').val();
             if (value == 2 || value == 3) {
                 $('.quantity').show();

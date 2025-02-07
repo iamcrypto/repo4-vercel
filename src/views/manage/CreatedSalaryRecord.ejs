@@ -93,6 +93,48 @@
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
   <script>
     $(document).ready(function () {
+      function formateT(params) {
+        let result = params < 10 ? "0" + params : params;
+        return result;
+      }
+      function timerJoin(params = "", addHours = 0) {
+        let date = "";
+        if (params) {
+          date = new Date(Number(params));
+        } else {
+          date = new Date();
+        }
+
+        date.setHours(date.getHours() + addHours);
+
+        let years = formateT(date.getFullYear());
+        let months = formateT(date.getMonth() + 1);
+        let days = formateT(date.getDate());
+
+        let hours = date.getHours() % 12;
+        hours = hours === 0 ? 12 : hours;
+        let ampm = date.getHours() < 12 ? "AM" : "PM";
+
+        let minutes = formateT(date.getMinutes());
+        let seconds = formateT(date.getSeconds());
+
+        return (
+          years +
+          "-" +
+          months +
+          "-" +
+          days +
+          " " +
+          hours +
+          ":" +
+          minutes +
+          ":" +
+          seconds +
+          " " +
+          ampm
+        );
+      }
+
   $("#salaryForm").on("click", "#submit", function (e) {
     e.preventDefault();
 
@@ -159,7 +201,7 @@
           '<td class="text-center">' + item.phone + '</td>' +
           '<td class="text-center">' + item.amount + '</td>' +
           '<td class="text-center">' + item.type + '</td>' +
-          '<td class="text-center">' + item.time + '</td>' +
+          '<td class="text-center">' + timerJoin(item.time) + '</td>' +
           '</tr>';
         tableBody.append(row);
       });

@@ -18,12 +18,24 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             height: 100%;
+            background-color: #ffffff;
+            color: black;
+        }
+
+        @font-face {
+            font-family: bahnschrift;
+            font-weight: 500;
+            src: url(/assets/woff2/bahnschrift-610d57ac.woff2)
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: bahnschrift
         }
 
         main {
@@ -40,7 +52,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: #f2f2f2;
+            background: #f0f0f5;
             padding: 6px;
             margin-left: auto;
             margin-right: auto;
@@ -49,7 +61,7 @@
         }
 
         footer {
-            background-color: #f2f2f2;
+            background-color: #f0f0f5;
             padding: 6px;
             text-align: center;
             border-top-left-radius: 12px;
@@ -62,7 +74,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: #f2f2f2;
+            background: #f0f0f5;
             padding: 0px 25px 20px;
             margin-left: auto;
             margin-right: auto;
@@ -89,7 +101,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: #f2f2f2;
+            background: #f0f0f5;
             padding: 0px 25px 20px;
             margin-left: auto;
             margin-right: auto;
@@ -132,7 +144,7 @@
             flex-direction: column;
             gap: 6px;
             /* align-items: center; */
-            background: #f2f2f2;
+            background: #f0f0f5;
             padding: 10px 25px 25px;
             margin-left: auto;
             margin-right: auto;
@@ -160,16 +172,15 @@
         .verification_form__root button {
             margin-top: 10px;
             padding: 10px;
-            border-radius: 9px;
-            border: 1px solid #ccc;
-            background-color: #1c4ff7;
-            background: linear-gradient(90deg,
-                    rgba(172, 10, 154, 1) 0%,
-                    rgba(0, 39, 255, 1) 100%);
-
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
+            user-select: none;
+            font: inherit;
+            color: #896646;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: .01333rem;
+            border: none;
+            border-radius: 99rem;
+            background: linear-gradient(131deg, #9d0b28 0%, #570530 100%);
         }
 
         .upi_pay_now {
@@ -178,11 +189,9 @@
             border-radius: 9px;
             border: 1px solid #ccc;
             background-color: #1c4ff7;
-            background: linear-gradient(40deg,
-                    rgba(172, 10, 154, 1) 0%,
-                    rgba(0, 39, 255, 1) 100%);
+            background: linear-gradient(180deg, #CCF2F4 0%, #A4EBF3 100%);
             font-weight: 500;
-            color: white;
+            color: #ffffff;
             font-size: 16px;
             cursor: pointer;
             text-decoration: none;
@@ -192,28 +201,44 @@
 
     <main>
         <header>
-            <h2>Pay Through UPI</h2>
+            <h2>Manual UPI</h2>
         </header>
 
-        <but class="upi_display_root"><br>
-        <img src="https://i.ibb.co/xYzFzsQ/Screenshot-2024-05-02-09-35-01-36-f181d789af62f47c4c059c999c3f3c80.jpg" width="175px">
+        <but class="upi_display_root">
             <h2 class="upi_display_title">
                 Send ₹ <span id="display_amount">
                     <%=Amount%>
                 </span> on
             </h2>
+
+
+
+            <style>
+                .upi_qr__img {
+                    width: 65%;
+                    margin-top: 30px;
+                    margin-bottom: 30px;
+                }
+            </style>
+            <img src="/payment/upi_qr.jpg" alt="" class="upi_qr__img">
             <button class="upi_display_content" id="copy_upi_id">
                 <p>
                     <strong>UPI ID: </strong>
+
                     <span id="upi_id_field">
-                        BHARATPE.8I0H0D3S9C20863@fbpe
+                        rtcitkumar@oksbi
                     </span>
 
                     <img class="upi_display_content__img"
                         src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMTE1Ljc3IDEyMi44OCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTE1Ljc3IDEyMi44OCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4uc3Qwe2ZpbGwtcnVsZTpldmVub2RkO2NsaXAtcnVsZTpldmVub2RkO308L3N0eWxlPjxnPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik04OS42MiwxMy45NnY3LjczaDEyLjE5aDAuMDF2MC4wMmMzLjg1LDAuMDEsNy4zNCwxLjU3LDkuODYsNC4xYzIuNSwyLjUxLDQuMDYsNS45OCw0LjA3LDkuODJoMC4wMnYwLjAyIHY3My4yN3YwLjAxaC0wLjAyYy0wLjAxLDMuODQtMS41Nyw3LjMzLTQuMSw5Ljg2Yy0yLjUxLDIuNS01Ljk4LDQuMDYtOS44Miw0LjA3djAuMDJoLTAuMDJoLTYxLjdINDAuMXYtMC4wMiBjLTMuODQtMC4wMS03LjM0LTEuNTctOS44Ni00LjFjLTIuNS0yLjUxLTQuMDYtNS45OC00LjA3LTkuODJoLTAuMDJ2LTAuMDJWOTIuNTFIMTMuOTZoLTAuMDF2LTAuMDJjLTMuODQtMC4wMS03LjM0LTEuNTctOS44Ni00LjEgYy0yLjUtMi41MS00LjA2LTUuOTgtNC4wNy05LjgySDB2LTAuMDJWMTMuOTZ2LTAuMDFoMC4wMmMwLjAxLTMuODUsMS41OC03LjM0LDQuMS05Ljg2YzIuNTEtMi41LDUuOTgtNC4wNiw5LjgyLTQuMDdWMGgwLjAyaDYxLjcgaDAuMDF2MC4wMmMzLjg1LDAuMDEsNy4zNCwxLjU3LDkuODYsNC4xYzIuNSwyLjUxLDQuMDYsNS45OCw0LjA3LDkuODJoMC4wMlYxMy45Nkw4OS42MiwxMy45NnogTTc5LjA0LDIxLjY5di03Ljczdi0wLjAyaDAuMDIgYzAtMC45MS0wLjM5LTEuNzUtMS4wMS0yLjM3Yy0wLjYxLTAuNjEtMS40Ni0xLTIuMzctMXYwLjAyaC0wLjAxaC02MS43aC0wLjAydi0wLjAyYy0wLjkxLDAtMS43NSwwLjM5LTIuMzcsMS4wMSBjLTAuNjEsMC42MS0xLDEuNDYtMSwyLjM3aDAuMDJ2MC4wMXY2NC41OXYwLjAyaC0wLjAyYzAsMC45MSwwLjM5LDEuNzUsMS4wMSwyLjM3YzAuNjEsMC42MSwxLjQ2LDEsMi4zNywxdi0wLjAyaDAuMDFoMTIuMTlWMzUuNjUgdi0wLjAxaDAuMDJjMC4wMS0zLjg1LDEuNTgtNy4zNCw0LjEtOS44NmMyLjUxLTIuNSw1Ljk4LTQuMDYsOS44Mi00LjA3di0wLjAyaDAuMDJINzkuMDRMNzkuMDQsMjEuNjl6IE0xMDUuMTgsMTA4LjkyVjM1LjY1di0wLjAyIGgwLjAyYzAtMC45MS0wLjM5LTEuNzUtMS4wMS0yLjM3Yy0wLjYxLTAuNjEtMS40Ni0xLTIuMzctMXYwLjAyaC0wLjAxaC02MS43aC0wLjAydi0wLjAyYy0wLjkxLDAtMS43NSwwLjM5LTIuMzcsMS4wMSBjLTAuNjEsMC42MS0xLDEuNDYtMSwyLjM3aDAuMDJ2MC4wMXY3My4yN3YwLjAyaC0wLjAyYzAsMC45MSwwLjM5LDEuNzUsMS4wMSwyLjM3YzAuNjEsMC42MSwxLjQ2LDEsMi4zNywxdi0wLjAyaDAuMDFoNjEuN2gwLjAyIHYwLjAyYzAuOTEsMCwxLjc1LTAuMzksMi4zNy0xLjAxYzAuNjEtMC42MSwxLTEuNDYsMS0yLjM3aC0wLjAyVjEwOC45MkwxMDUuMTgsMTA4LjkyeiIvPjwvZz48L3N2Zz4="
-                        alt="BHARATPE.8I0H0D3S9C20863@fbpe" />
+                        alt="copy upi id" />
                 </p>
             </button>
+
+            <!-- <a class="upi_pay_now" id="upi_pay_now" href="upi://pay?pa=<%=UpiId%>&amp;cu=INR&amp;am=<%=Amount%>"> Pay
+                Now With App!</a> -->
+        </but>
+
         <form class="verification_form__root" action="submit.php" method="post">
             <label for="upi_ref_no">UPI Ref. No.</label>
             <input type="text" id="upi_ref_no" name="upi_ref_no" required placeholder="Enter Your UTR here..." />
@@ -251,14 +276,6 @@
                     <strong>Step 5:</strong>
                     <span> Click on the "Submit" button to complete the process. </span>
                 </p>
-                <p>
-                    <strong>Step 6:</strong>
-                    <span> After Submitting, wait for few minutes. Your amount will get credited to your wallet after few minutes.</span>
-                </p>    
-                <p>
-                    <strong style="color:red;">Note: </strong>
-                    <span> &nbsp;Pay the Same amount as You have &nbsp;selected. If You pay the Wrong &nbsp;Amount, You will lose your all payment.</span>
-                </p>    
             </div>
         </div>
 
