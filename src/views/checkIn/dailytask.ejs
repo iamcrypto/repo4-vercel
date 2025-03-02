@@ -1829,7 +1829,7 @@
       const initDailyRechargeBonus = async () => {
          try {
             const response = await axios.get("/api/activity/daily_recharge_bonus")
-
+            console.log(response);
             if (response.data.status === true) {
                const list = response.data.data
                const html = list

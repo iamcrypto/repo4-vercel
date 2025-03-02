@@ -1630,39 +1630,47 @@ const withdrawal3 = async (req, res) => {
                 timeStamp: timeNow,
               });
             }
+            else
+            {
+              let infoBank = user_bank[0];
+              const sql = `INSERT INTO withdraw SET 
+                      id_order = ?,
+                      phone = ?,
+                      money = ?,
+                      stk = ?,
+                      name_bank = ?,
+                      ifsc = ?,
+                      name_user = ?,
+                      status = ?,
+                      today = ?,
+                      time = ?`;
+              await connection.execute(sql, [
+                id_time + "" + id_order,
+                userInfo.phone,
+                money,
+                infoBank.stk,
+                infoBank.name_bank,
+                infoBank.email,
+                infoBank.name_user,
+                0,
+                checkTime,
+                dates,
+              ]);
+              await connection.query(
+                "UPDATE users SET money = money - ? WHERE phone = ? ",
+                [money, userInfo.phone],
+              );
+              return res.status(200).json({
+                message: "Withdrawal successful",
+                status: true,
+                money: userInfo.money - money,
+                timeStamp: timeNow,
+              });
+            }
           } else {
-            let infoBank = user_bank[0];
-            const sql = `INSERT INTO withdraw SET 
-                    id_order = ?,
-                    phone = ?,
-                    money = ?,
-                    stk = ?,
-                    name_bank = ?,
-                    ifsc = ?,
-                    name_user = ?,
-                    status = ?,
-                    today = ?,
-                    time = ?`;
-            await connection.execute(sql, [
-              id_time + "" + id_order,
-              userInfo.phone,
-              money,
-              infoBank.stk,
-              infoBank.name_bank,
-              infoBank.email,
-              infoBank.name_user,
-              0,
-              checkTime,
-              dates,
-            ]);
-            await connection.query(
-              "UPDATE users SET money = money - ? WHERE phone = ? ",
-              [money, userInfo.phone],
-            );
             return res.status(200).json({
-              message: "Withdrawal successful",
-              status: true,
-              money: userInfo.money - money,
+              message: "The total bet is not enough to fulfill the request",
+              status: false,
               timeStamp: timeNow,
             });
           }

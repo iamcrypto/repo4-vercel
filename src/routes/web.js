@@ -296,7 +296,7 @@ const initWebRouter = (app) => {
     middlewareController,
     promotionController.claimFirstRechargeReword,
   );
-  router.get(
+  router.post(
     "/api/activity/attendance_bonus",
     middlewareController,
     promotionController.getAttendanceBonus,
@@ -306,7 +306,7 @@ const initWebRouter = (app) => {
     middlewareController,
     promotionController.claimAttendanceBonus,
   );
-  router.get(
+  router.post(
     "/api/activity/attendance/record",
     middlewareController,
     promotionController.getAttendanceBonusRecord,

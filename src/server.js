@@ -13,7 +13,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3006;
 
 app.use(cookieParser());
 // app.use(express.static('public'));

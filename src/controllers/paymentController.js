@@ -1443,7 +1443,7 @@ const addUserRewards = async (phone, bonus, rewardType) => {
   let timeNow = Date.now();
 
   await connection.query(
-    "INSERT INTO claimed_rewards (reward_id,phone, amount, type, time, status) VALUES (?,?,?,?,?,?)",
+    "type, time, status) VALUES (?,?,?,?,?,?)",
     [
       reward_id,
       phone,

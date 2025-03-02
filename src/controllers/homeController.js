@@ -148,6 +148,7 @@ const attendanceRulesPage = async (req, res) => {
   return res.render("checkIn/attendanceRules.ejs");
 };
 
+
 const changeAvatarPage = async (req, res) => {
   return res.render("member/change_avatar.ejs");
 };
@@ -402,6 +403,7 @@ const homeController = {
   changeAvatarPage,
   invitationRulesPage,
   supportPage,
+  
 };
 
 export default homeController;

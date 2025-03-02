@@ -677,6 +677,7 @@ function getNthMinuteSinceDayStart() {
 }
 
 const addTrxWingo = async (game) => {
+  console.log("called");
   try {
     let join = "";
     if (game == 1) join = TRX_WINGO_GAME_TYPE_MAP.MIN_1;
@@ -709,7 +710,7 @@ const addTrxWingo = async (game) => {
             "TRON-PRO-API-KEY": process.env.TRON_API_KEY,
           },
         });
-
+        console.log(response.data.data);
         const NextBlock = response.data.data
           .map((item) => {
             return {

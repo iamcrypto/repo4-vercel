@@ -582,6 +582,7 @@ const updateAvatarAPI = async (req, res) => {
     }
 
     let auth = req.cookies.auth;
+    console.log(auth);
     let avatar = _.trim(req.body?.avatar || "");
 
     const [rows] = await connection.query(
