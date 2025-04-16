@@ -441,7 +441,7 @@ const betTrxWingo = async (req, res) => {
         [auth],
       );
       await rosesPlus(auth, money * x);
-      // const [level] = await connection.query('SELECT * FROM level ');
+      /* const [level] = await connection.query('SELECT * FROM level ');
       // let level0 = level[0];
       // const sql2 = `INSERT INTO roses SET
       // phone = ?,
@@ -458,7 +458,8 @@ const betTrxWingo = async (req, res) => {
       // let f3 = (total_m / 100) * level0.f3;
       // let f4 = (total_m / 100) * level0.f4;
       // await connection.query(sql2, [userInfo.phone, userInfo.code, userInfo.invite, f1, f2, f3, f4, timeNow]);
-      // console.log(level);
+       console.log(level); */
+
       return res.status(200).json({
         message: "Successful bet",
         status: true,
@@ -561,10 +562,10 @@ const listOrderOld = async (req, res) => {
 const GetMyEmerdList = async (req, res) => {
   let { typeid, pageno, pageto } = req.body;
 
-  // if (!pageno || !pageto) {
-  //     pageno = 0;
-  //     pageto = 10;
-  // }
+  /* if (!pageno || !pageto) {
+      pageno = 0;
+      pageto = 10;
+   } */
 
   if (typeid != 1 && typeid != 3 && typeid != 5 && typeid != 10) {
     return res.status(200).json({
@@ -732,12 +733,12 @@ const addTrxWingo = async (game) => {
 
         let Result = generateResultByHash(Hash);
 
-        // console.log({
-        //    BlockId,
-        //    BlockTime: moment(BlockTime).format("HH:mm:ss"),
-        //    Hash,
-        //    Result,
-        // })
+        /* console.log({
+           BlockId,
+           BlockTime: moment(BlockTime).format("HH:mm:ss"),
+           Hash,
+           Result,
+         })*/
 
         await connection.query(
           `
@@ -826,14 +827,15 @@ const handlingTrxWingo1P = async (typeid) => {
       let total = orders.money;
       let phone = orders.phone;
       let winAmount = calculateWinAmount(bet, result, total);
-      // x - green
-      // t - Violet
-      // d - red
-
-      // Sirf 1-4 aur 6-9 tk hi *9 aana chahiye
-      // Aur 0 aur 5 pe *4.5
-      // Aur red aur green pe *2
-      // 1,2,3,4,6,7,8,9
+      /*
+      x - green
+      t - Violet
+      d - red
+      
+      Sirf 1-4 aur 6-9 tk hi *9 aana chahiye
+      Aur 0 aur 5 pe *4.5
+      Aur red aur green pe *2
+      1,2,3,4,6,7,8,9 */
 
       const [users] = await connection.query(
         "SELECT `money` FROM `users` WHERE `phone` = ?",
