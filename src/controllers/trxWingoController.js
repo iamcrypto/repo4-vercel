@@ -101,7 +101,7 @@ const rosesPlus = async (auth, money) => {
   if (userInfo.total_money >= 100) {
     if (f1.length > 0) {
       let infoF1 = f1[0];
-      for (let levelIndex = 1; levelIndex <= 6; levelIndex++) {
+      for (let levelIndex = 0; levelIndex <= 9; levelIndex++) {
         let rosesF = 0;
         if (infoF1.user_level >= levelIndex && infoF1.total_money >= 100) {
           rosesF = (money / 100) * level[levelIndex - 1].f1;
@@ -677,7 +677,7 @@ function getNthMinuteSinceDayStart() {
 }
 
 const addTrxWingo = async (game) => {
-  console.log("called");
+  //console.log("called");
   try {
     let join = "";
     if (game == 1) join = TRX_WINGO_GAME_TYPE_MAP.MIN_1;
@@ -710,7 +710,7 @@ const addTrxWingo = async (game) => {
             "TRON-PRO-API-KEY": process.env.TRON_API_KEY,
           },
         });
-        console.log(response.data.data);
+        //console.log(response.data.data);
         const NextBlock = response.data.data
           .map((item) => {
             return {

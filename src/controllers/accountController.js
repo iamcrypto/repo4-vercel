@@ -174,39 +174,39 @@ const register = async (req, res) => {
     let ip = utils.getIpAddress(req);
     let time = moment().valueOf();
 
-    const [check_u] = await connection.query(
-      "SELECT * FROM users WHERE phone = ?",
-      [phoneNumber],
-    );
-    const [check_i] = await connection.query(
-      "SELECT * FROM users WHERE code = ? ",
-      [invitecode],
-    );
-    const [check_ip] = await connection.query(
-      "SELECT * FROM users WHERE ip_address = ? ",
-      [ip],
-    );
+    // const [check_u] = await connection.query(
+    //   "SELECT * FROM users WHERE phone = ?",
+    //   [phoneNumber],
+    // );
+    // const [check_i] = await connection.query(
+    //   "SELECT * FROM users WHERE code = ? ",
+    //   [invitecode],
+    // );
+    // const [check_ip] = await connection.query(
+    //   "SELECT * FROM users WHERE ip_address = ? ",
+    //   [ip],
+    // );
 
-    if (check_u.length > 0) {
-      return res.status(200).json({
-        message: "Registered phone number",
-        status: false,
-      });
-    }
+    // if (check_u.length > 0) {
+    //   return res.status(200).json({
+    //     message: "Registered phone number",
+    //     status: false,
+    //   });
+    // }
 
-    if (check_i.length === 0) {
-      return res.status(200).json({
-        message: "Referrer code does not exist",
-        status: false,
-      });
-    }
+    // if (check_i.length === 0) {
+    //   return res.status(200).json({
+    //     message: "Referrer code does not exist",
+    //     status: false,
+    //   });
+    // }
 
-    if (check_ip.length > 3) {
-      return res.status(200).json({
-        message: "Registered IP address",
-        status: false,
-      });
-    }
+    // if (check_ip.length > 3) {
+    //   return res.status(200).json({
+    //     message: "Registered IP address",
+    //     status: false,
+    //   });
+    // }
 
     let ctv = check_i[0].level == 2 ? check_i[0].phone : check_i[0].ctv;
     const hashedPassword = await bcrypt.hash(pwd, saltRounds);
