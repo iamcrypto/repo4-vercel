@@ -156,104 +156,104 @@ const rosesPlus = async (auth, money) => {
   }
 };
 
-// const rosesPlus = async (auth, money) => {
-//     const [level] = await connection.query('SELECT * FROM level ');
-//     let level0 = level[0];
+/* const rosesPlus = async (auth, money) => {
+    const [level] = await connection.query('SELECT * FROM level ');
+    let level0 = level[0];
 
-//     const [user] = await connection.query('SELECT `phone`, `code`, `invite` FROM users WHERE token = ? AND veri = 1  LIMIT 1 ', [auth]);
-//     let userInfo = user[0];
-//     const [f1] = await connection.query('SELECT `phone`, `code`, `invite`, `rank` FROM users WHERE code = ? AND veri = 1  LIMIT 1 ', [userInfo.invite]);
-//     if (money >= 10000) {
-//         if (f1.length > 0) {
-//             let infoF1 = f1[0];
-//             let rosesF1 = (money / 100) * level0.f1;
-//             await connection.query('UPDATE users SET money = money + ?, roses_f1 = roses_f1 + ?, roses_f = roses_f + ?, roses_today = roses_today + ? WHERE phone = ? ', [rosesF1, rosesF1, rosesF1, rosesF1, infoF1.phone]);
-//             const [f2] = await connection.query('SELECT `phone`, `code`, `invite`, `rank` FROM users WHERE code = ? AND veri = 1  LIMIT 1 ', [infoF1.invite]);
-//             if (f2.length > 0) {
-//                 let infoF2 = f2[0];
-//                 let rosesF2 = (money / 100) * level0.f2;
-//                 await connection.query('UPDATE users SET money = money + ?, roses_f = roses_f + ?, roses_today = roses_today + ? WHERE phone = ? ', [rosesF2, rosesF2, rosesF2, infoF2.phone]);
-//                 const [f3] = await connection.query('SELECT `phone`, `code`, `invite`, `rank` FROM users WHERE code = ? AND veri = 1  LIMIT 1 ', [infoF2.invite]);
-//                 if (f3.length > 0) {
-//                     let infoF3 = f3[0];
-//                     let rosesF3 = (money / 100) * level0.f3;
-//                     await connection.query('UPDATE users SET money = money + ?, roses_f = roses_f + ?, roses_today = roses_today + ? WHERE phone = ? ', [rosesF3, rosesF3, rosesF3, infoF3.phone]);
-//                     const [f4] = await connection.query('SELECT `phone`, `code`, `invite`, `rank` FROM users WHERE code = ? AND veri = 1  LIMIT 1 ', [infoF3.invite]);
-//                     if (f4.length > 0) {
-//                         let infoF4 = f4[0];
-//                         let rosesF4 = (money / 100) * level0.f4;
-//                         await connection.query('UPDATE users SET money = money + ?, roses_f = roses_f + ?, roses_today = roses_today + ? WHERE phone = ? ', [rosesF4, rosesF4, rosesF4, infoF4.phone]);
-//                     }
-//                 }
-//             }
+    const [user] = await connection.query('SELECT `phone`, `code`, `invite` FROM users WHERE token = ? AND veri = 1  LIMIT 1 ', [auth]);
+    let userInfo = user[0];
+    const [f1] = await connection.query('SELECT `phone`, `code`, `invite`, `rank` FROM users WHERE code = ? AND veri = 1  LIMIT 1 ', [userInfo.invite]);
+    if (money >= 10000) {
+        if (f1.length > 0) {
+            let infoF1 = f1[0];
+            let rosesF1 = (money / 100) * level0.f1;
+            await connection.query('UPDATE users SET money = money + ?, roses_f1 = roses_f1 + ?, roses_f = roses_f + ?, roses_today = roses_today + ? WHERE phone = ? ', [rosesF1, rosesF1, rosesF1, rosesF1, infoF1.phone]);
+            const [f2] = await connection.query('SELECT `phone`, `code`, `invite`, `rank` FROM users WHERE code = ? AND veri = 1  LIMIT 1 ', [infoF1.invite]);
+            if (f2.length > 0) {
+                let infoF2 = f2[0];
+                let rosesF2 = (money / 100) * level0.f2;
+                await connection.query('UPDATE users SET money = money + ?, roses_f = roses_f + ?, roses_today = roses_today + ? WHERE phone = ? ', [rosesF2, rosesF2, rosesF2, infoF2.phone]);
+                const [f3] = await connection.query('SELECT `phone`, `code`, `invite`, `rank` FROM users WHERE code = ? AND veri = 1  LIMIT 1 ', [infoF2.invite]);
+                if (f3.length > 0) {
+                    let infoF3 = f3[0];
+                    let rosesF3 = (money / 100) * level0.f3;
+                    await connection.query('UPDATE users SET money = money + ?, roses_f = roses_f + ?, roses_today = roses_today + ? WHERE phone = ? ', [rosesF3, rosesF3, rosesF3, infoF3.phone]);
+                    const [f4] = await connection.query('SELECT `phone`, `code`, `invite`, `rank` FROM users WHERE code = ? AND veri = 1  LIMIT 1 ', [infoF3.invite]);
+                    if (f4.length > 0) {
+                        let infoF4 = f4[0];
+                        let rosesF4 = (money / 100) * level0.f4;
+                        await connection.query('UPDATE users SET money = money + ?, roses_f = roses_f + ?, roses_today = roses_today + ? WHERE phone = ? ', [rosesF4, rosesF4, rosesF4, infoF4.phone]);
+                    }
+                }
+            }
 
-//         }
-//     }
-// }
+        }
+    }
+}
 
-// const rosesPlus = async (auth, money) => {
-//     const [level] = await connection.query('SELECT * FROM level ');
+const rosesPlus = async (auth, money) => {
+    const [level] = await connection.query('SELECT * FROM level ');
 
-//     const [user] = await connection.query('SELECT `phone`, `code`, `invite`, `user_level` FROM users WHERE token = ? AND veri = 1 LIMIT 1 ', [auth]);
-//     let userInfo = user[0];
-//     const [f1] = await connection.query('SELECT `phone`, `code`, `invite`, `rank`, `user_level` FROM users WHERE code = ? AND veri = 1 LIMIT 1 ', [userInfo.invite]);
+    const [user] = await connection.query('SELECT `phone`, `code`, `invite`, `user_level` FROM users WHERE token = ? AND veri = 1 LIMIT 1 ', [auth]);
+    let userInfo = user[0];
+    const [f1] = await connection.query('SELECT `phone`, `code`, `invite`, `rank`, `user_level` FROM users WHERE code = ? AND veri = 1 LIMIT 1 ', [userInfo.invite]);
 
-//     if (money < 300) {
-//         return; // No need to proceed if money is less than 300
-//     }
+    if (money < 300) {
+        return; // No need to proceed if money is less than 300
+    }
 
-//     if (f1.length === 0) {
-//         return; // No referrer found
-//     }
+    if (f1.length === 0) {
+        return; // No referrer found
+    }
 
-//     let infoF1 = f1[0];
+    let infoF1 = f1[0];
 
-//     const f2 = await connection.query('SELECT `phone`, `code`, `invite`, `rank`, `user_level` FROM users WHERE code = ? AND veri = 1 LIMIT 1 ', [infoF1.invite]);
-//     if (f2.length > 0) {
-//         let infoF2 = f2[0];
-//         if (infoF2.user_level >= 2) {
-//             let rosesF2 = (money / 100) * level[1].f1;
-//             await connection.query('UPDATE users SET money = money + ?, roses_f = roses_f + ?, roses_today = roses_today + ? WHERE phone = ? ', [rosesF2, rosesF2, rosesF2, infoF2.phone]);
-//         }
+    const f2 = await connection.query('SELECT `phone`, `code`, `invite`, `rank`, `user_level` FROM users WHERE code = ? AND veri = 1 LIMIT 1 ', [infoF1.invite]);
+    if (f2.length > 0) {
+        let infoF2 = f2[0];
+        if (infoF2.user_level >= 2) {
+            let rosesF2 = (money / 100) * level[1].f1;
+            await connection.query('UPDATE users SET money = money + ?, roses_f = roses_f + ?, roses_today = roses_today + ? WHERE phone = ? ', [rosesF2, rosesF2, rosesF2, infoF2.phone]);
+        }
 
-//         const f3 = await connection.query('SELECT `phone`, `code`, `invite`, `rank`, `user_level` FROM users WHERE code = ? AND veri = 1 LIMIT 1 ', [infoF2.invite]);
-//         if (f3.length > 0) {
-//             let infoF3 = f3[0];
-//             if (infoF3.user_level >= 3) {
-//                 let rosesF3 = (money / 100) * level[2].f1;
-//                 await connection.query('UPDATE users SET money = money + ?, roses_f = roses_f + ?, roses_today = roses_today + ? WHERE phone = ? ', [rosesF3, rosesF3, rosesF3, infoF3.phone]);
-//             }
+        const f3 = await connection.query('SELECT `phone`, `code`, `invite`, `rank`, `user_level` FROM users WHERE code = ? AND veri = 1 LIMIT 1 ', [infoF2.invite]);
+        if (f3.length > 0) {
+            let infoF3 = f3[0];
+            if (infoF3.user_level >= 3) {
+                let rosesF3 = (money / 100) * level[2].f1;
+                await connection.query('UPDATE users SET money = money + ?, roses_f = roses_f + ?, roses_today = roses_today + ? WHERE phone = ? ', [rosesF3, rosesF3, rosesF3, infoF3.phone]);
+            }
 
-//             const f4 = await connection.query('SELECT `phone`, `code`, `invite`, `rank`, `user_level` FROM users WHERE code = ? AND veri = 1 LIMIT 1 ', [infoF3.invite]);
-//             if (f4.length > 0) {
-//                 let infoF4 = f4[0];
-//                 if (infoF4.user_level >= 4) {
-//                     let rosesF4 = (money / 100) * level[3].f1;
-//                     await connection.query('UPDATE users SET money = money + ?, roses_f = roses_f + ?, roses_today = roses_today + ? WHERE phone = ? ', [rosesF4, rosesF4, rosesF4, infoF4.phone]);
-//                 }
-//             }
-//         }
-//     }
-// }
+            const f4 = await connection.query('SELECT `phone`, `code`, `invite`, `rank`, `user_level` FROM users WHERE code = ? AND veri = 1 LIMIT 1 ', [infoF3.invite]);
+            if (f4.length > 0) {
+                let infoF4 = f4[0];
+                if (infoF4.user_level >= 4) {
+                    let rosesF4 = (money / 100) * level[3].f1;
+                    await connection.query('UPDATE users SET money = money + ?, roses_f = roses_f + ?, roses_today = roses_today + ? WHERE phone = ? ', [rosesF4, rosesF4, rosesF4, infoF4.phone]);
+                }
+            }
+        }
+    }
+}
 
-// const rosesPlus = async (auth, money) => {
-//     const [level] = await connection.query('SELECT * FROM level ');
-//     const [user] = await connection.query('SELECT `phone`, `code`, `invite` FROM users WHERE token = ? AND veri = 1  LIMIT 1 ', [auth]);
-//     let userInfo = user[0];
-//     const [f1] = await connection.query('SELECT `phone`, `code`, `invite`, `rank` FROM users WHERE code = ? AND veri = 1  LIMIT 1 ', [userInfo.invite]);
-//     let infoF1 = f1[0];
+const rosesPlus = async (auth, money) => {
+    const [level] = await connection.query('SELECT * FROM level ');
+    const [user] = await connection.query('SELECT `phone`, `code`, `invite` FROM users WHERE token = ? AND veri = 1  LIMIT 1 ', [auth]);
+    let userInfo = user[0];
+    const [f1] = await connection.query('SELECT `phone`, `code`, `invite`, `rank` FROM users WHERE code = ? AND veri = 1  LIMIT 1 ', [userInfo.invite]);
+    let infoF1 = f1[0];
 
-//     const [check_invite] = await connection.query('SELECT * FROM users WHERE invite = ?', [userInfo.invite]);
-//     if (money >= 300) {
-//         let levels = [2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35, 38, 41, 44];
-//         let levelIndex = levels.findIndex(levelThreshold => check_invite.length < levelThreshold);
+    const [check_invite] = await connection.query('SELECT * FROM users WHERE invite = ?', [userInfo.invite]);
+    if (money >= 300) {
+        let levels = [2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35, 38, 41, 44];
+        let levelIndex = levels.findIndex(levelThreshold => check_invite.length < levelThreshold);
 
-//         if (levelIndex !== -1) {
-//             let rosesF1 = (money / 100) * level[levelIndex].f1;
-//             await connection.query('UPDATE users SET money = money + ?, roses_f1 = roses_f1 + ?, roses_f = roses_f + ?, roses_today = roses_today + ? WHERE phone = ? ', [rosesF1, rosesF1, rosesF1, rosesF1, infoF1.phone]);
-//         }
-//     }
-// }
+        if (levelIndex !== -1) {
+            let rosesF1 = (money / 100) * level[levelIndex].f1;
+            await connection.query('UPDATE users SET money = money + ?, roses_f1 = roses_f1 + ?, roses_f = roses_f + ?, roses_today = roses_today + ? WHERE phone = ? ', [rosesF1, rosesF1, rosesF1, rosesF1, infoF1.phone]);
+        }
+    }
+ }*/
 
 const betTrxWingo = async (req, res) => {
   try {
